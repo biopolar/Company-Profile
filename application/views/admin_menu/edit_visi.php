@@ -9,9 +9,11 @@
                         <input type="hidden" name="id" id="id" value="<?= $visi_misi['id'] ?>" >
                         <div class="modal-body">
                             <div class="form-group mb-3">
+                            <label>Header</label>
                                 <input type="text" class="form-control" namespace id="header" name="header" value="<?= $visi_misi['header'] ?>">
                             </div>
                             <div class="form-group mb-3">
+                            <label>Visi Misi </label>
                                 <textarea name="visi_misi" id="editor" class="form-control" cols="30" rows="10" placeholder="" required><?= $visi_misi['visi_misi']?></textarea> 
                             </div>
                         </div>

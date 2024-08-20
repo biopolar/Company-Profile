@@ -70,26 +70,33 @@
             <form action="<?= base_url('admin_menu/karyawan') ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group mb-3">
+                    <label>Nama Karyawan </label>
                         <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Karyawan" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Jabatan </label>
                         <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan Karyawan" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Link Facebook </label>
                         <input type="text" class="form-control" id="Facebook" name="facebook" placeholder="Facebook" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Link Instagram </label>
                         <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Link LinkedIn </label>
                         <input type="text" class="form-control" id="linkedin" name="linkedin" placeholder="LinkedIn" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Pesan & Kesan </label>
                         <textarea name="pesan" id="editor" class="form-control" cols="30" rows="10" placeholder="Pesan" required></textarea> 
                     </div>
+                    <label>Foto Karyawan</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image">
-                        <label class="custom-file-label" for="image">Choose file</label>
+                        <label class="custom-file-label" for="image">Pilih Gambar</label>
                         <span style="color:red ;">Bisa di input dengan tipe file : JPG, JPEG, PNG</span>
                     </div>
                 <div class="modal-footer">

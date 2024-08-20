@@ -1376,11 +1376,19 @@ section,
   text-align: center;
 }
 
-.testimonials .testimonial-item .testimonial-img {
+.testimonials .testimonial-item .testimonial-img-container {
   width: 100px;
+  height: 100px;
   border-radius: 50%;
   border: 6px solid color-mix(in srgb, var(--default-color), transparent 85%);
   margin: 0 auto;
+  overflow: hidden;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .testimonials .testimonial-item h3 {
@@ -1415,6 +1423,8 @@ section,
   display: inline-block;
   left: -5px;
   position: relative;
+  vertical-align: middle;
+  margin-right: 5px;
 }
 
 .testimonials .testimonial-item .quote-icon-right {
@@ -1423,6 +1433,8 @@ section,
   position: relative;
   top: 10px;
   transform: scale(-1, -1);
+  vertical-align: middle;
+  margin-left: 5px;
 }
 
 .testimonials .testimonial-item p {
@@ -1453,7 +1465,7 @@ section,
 
 @media (min-width: 992px) {
   .testimonials .testimonial-item p {
-    width: 80%;
+      width: 80%;
   }
 }
 
@@ -1711,6 +1723,14 @@ section,
 .portfolio-details .portfolio-description p {
   padding: 0;
   color: color-mix(in srgb, var(--default-color), transparent 30%);
+}
+
+.no-data-message {
+  text-align: center;
+  font-size: 18px;
+  color: red;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 /*--------------------------------------------------------------

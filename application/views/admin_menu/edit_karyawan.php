@@ -8,21 +8,27 @@
                     <form action="<?= base_url('admin_menu/edit_karyawan/') . $karyawan['id']; ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?= $karyawan['id'] ?>" >
                         <div class="form-group mb-3">
+                        <label>Nama </label>
                             <input type="text" class="form-control" id="nama" name="nama" placeholder="Nama Karyawan" value="<?= $karyawan['nama'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Jabatan </label>
                             <input type="text" class="form-control" id="jabatan" name="jabatan" placeholder="Jabatan Karyawan" value="<?= $karyawan['jabatan'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Facebook </label>
                             <input type="text" class="form-control" id="Facebook" name="facebook" placeholder="Facebook" value="<?= $karyawan['facebook'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Instagram </label>
                             <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram" value="<?= $karyawan['instagram'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>LinkedIn </label>
                             <input type="text" class="form-control" id="linkedin" name="linkedin" placeholder="LinkedIn" value="<?= $karyawan['linkedin'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Pesan </label>
                             <textarea name="pesan" id="editor" class="form-control" cols="30" rows="10" placeholder="Pesan" required><?= $karyawan['pesan'] ?></textarea> 
                         </div>
                         <div class="form-group-row">
@@ -35,7 +41,7 @@
                                         <div class="col-sm-9">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image">
-                                            <label class="custom-file-label" for="image">Gambar</label>
+                                            <label class="custom-file-label" for="image"><?= $karyawan['image'] ?></label>
                                             <span style="color:red ;">Bisa di input dengan tipe file : JPG, JPEG, PNG</span>
                                         </div>
                                     </div>

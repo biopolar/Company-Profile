@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: 16 Agu 2024 pada 15.22
+-- Generation Time: 20 Agu 2024 pada 08.53
 -- Versi Server: 10.1.9-MariaDB
 -- PHP Version: 7.0.0
 
@@ -65,8 +65,9 @@ INSERT INTO `admin_menu` (`id`, `nama`, `icon`, `url`) VALUES
 (8, 'Karyawan', 'fas fa-fw fa-cash-register', 'karyawan'),
 (9, 'Portofolio', 'fas fa-fw fa-folder', 'portofolio'),
 (10, 'Service', 'fas fa-newspaper fa-fw', 'service'),
-(11, 'contact', 'fas fa-fw fa-table', 'contact'),
-(14, 'Partner', 'fas fa-fw fa-handshake', 'partner');
+(11, 'Contact', 'fas fa-fw fa-table', 'contact'),
+(14, 'Partner', 'fas fa-fw fa-handshake', 'partner'),
+(15, 'Comment', 'fas fa-fw fa-comment', 'comment');
 
 -- --------------------------------------------------------
 
@@ -86,6 +87,27 @@ CREATE TABLE `banner_image` (
 
 INSERT INTO `banner_image` (`id`, `text`, `image`) VALUES
 (5, '<h2><strong><big>Electronix.ID<br>\r\nInnovation For the future</big></strong></h2>', 'cta-bg1.jpg');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `comment`
+--
+
+CREATE TABLE `comment` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) NOT NULL,
+  `jabatan` varchar(550) NOT NULL,
+  `pesan` varchar(255) NOT NULL,
+  `image` varchar(250) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data untuk tabel `comment`
+--
+
+INSERT INTO `comment` (`id`, `name`, `jabatan`, `pesan`, `image`) VALUES
+(1, 'Kipas Dindinding', 'Orang Pengangguran', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae a officiis amet animi sint molestias culpa hic libero laborum </p>', 'testimonials-411.jpg');
 
 -- --------------------------------------------------------
 
@@ -133,7 +155,7 @@ CREATE TABLE `karyawan` (
 --
 
 INSERT INTO `karyawan` (`id`, `nama`, `facebook`, `instagram`, `linkedin`, `jabatan`, `pesan`, `image`) VALUES
-(2, 'RIZKY PANDU WIBOWO AJI', 'https://www.facebook.com/R.pandu206', 'https://www.instagram.com/mochka.cke/?hl=en', 'https://www.linkedin.com/in/rizky-pandu-67b91a277/', 'FreeLancer', '<p>Saya sebagai freelancer saya senang bisa membantu orang orang yang membutuhkan pertolongan mengembangkan sebuah website</p>', 'WhatsApp_Image_2024-06-03_at_19_53_19111.jpeg');
+(2, 'RIZKY PANDU WIBOWO AJI', 'https://www.facebook.com/R.pandu206', 'https://www.instagram.com/mochka.cke/?hl=en', 'https://www.linkedin.com/in/rizky-pandu-67b91a277/', 'FreeLancer', '<p>Saya sebagai freelancer saya senang bisa membantu orang orang yang membutuhkan pertolongan mengembangkan sebuah website</p>', 'test1.jpeg');
 
 -- --------------------------------------------------------
 
@@ -152,8 +174,13 @@ CREATE TABLE `partner` (
 --
 
 INSERT INTO `partner` (`id`, `url`, `image`) VALUES
-(1, 'https://www.coca-cola.com/id/id', 'Coca-Cola-Logo1.png'),
-(3, 'https://bumn.go.id/', 'logo_bumn_png.png');
+(1, 'https://bumn.go.id/', 'logo_bumn_png2.png'),
+(2, 'https://www.coca-cola.com/id/id', 'Coca-Cola-Logo2.png'),
+(3, 'https://www.coca-cola.com/id/id/brands/sprite', 'sprite_PNG987761.png'),
+(4, 'https://www.kominfo.go.id/', 'logo-kominfo.png'),
+(5, 'https://www.astra.co.id/', 'Astra-International.png'),
+(6, 'https://www.kemdikbud.go.id/', 'png-clipart-indonesia-national-science-olympiad-ministry-of-education-and-culture-government-ministries-of-indonesia-indonesia-culture-culture-logo.png'),
+(7, 'https://www.sinarmasland.com/', 'sinarmas-logo.png');
 
 -- --------------------------------------------------------
 
@@ -177,9 +204,9 @@ CREATE TABLE `portofolio` (
 --
 
 INSERT INTO `portofolio` (`id`, `judul`, `slug`, `client`, `deskripsi`, `tipe`, `created_at`, `image`) VALUES
-(1, 'Elektronik Industri', 'elektronik_industri', 'PT Kelapa Nyangkut', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A maiores doloribus saepe libero doloremque officia similique eaque obcaecati ea, sunt nobis veritatis quis quibusdam quo!<br />\r\n<br />\r\nConsectetur perferendis delectus illo assumenda quas quia cum! Ipsum illo tenetur maiores explicabo, eum velit provident veritatis repellendus, quos, ipsam asperiores omnis quis expedita. Beatae?</p>', 'project', 1723711108, 'R2.jpeg'),
-(2, 'Router Wifi', 'router_wifi', 'PT Kipas Didinding', '<p><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. A maiores doloribus saepe libero doloremque officia similique eaque obcaecati ea, sunt nobis veritatis quis quibusdam quo!<br>\r\n<br>\r\nConsectetur perferendis delectus illo assumenda quas quia cum! Ipsum illo tenetur maiores explicabo, eum velit provident veritatis repellendus, quos, ipsam asperiores omnis quis expedita. Beatae?</strong></p>', 'product', 1723711152, '7_Day_24Hr__SHOW_New_Releases_-_TOTOLINK_AC1200_Simultaneous_Dual_Band_Gigabit_Router_(A3002RU)3.jpeg'),
-(3, 'Rumah Pintar Menggunakan Kartu RFID', 'rumah_pintar_rfid', 'PT Cicak Didinding', '<h3><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. A maiores doloribus saepe libero doloremque officia similique eaque obcaecati ea, sunt nobis veritatis quis quibusdam quo! Consectetur perferendis delectus illo assumenda quas quia cum!</strong><br />\r\n<br />\r\n<span class="marker">Ipsum illo tenetur maiores explicabo, eum velit provident veritatis repellendus, quos, ipsam asperiores omnis quis expedita. Beatae?</span></h3>', 'innovation', 1723711219, 'Leading_RFID_Tags_Supplier_In_Market3.jpeg');
+(1, 'Elektronik Industri', 'elektronik_industri', 'PT Kelapa Nyangkut', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. A maiores doloribus saepe libero doloremque officia similique eaque obcaecati ea, sunt nobis veritatis quis quibusdam quo!<br />\r\n<br />\r\nConsectetur perferendis delectus illo assumenda quas quia cum! Ipsum illo tenetur maiores explicabo, eum velit provident veritatis repellendus, quos, ipsam asperiores omnis quis expedita. Beatae?</p>', 'Project', 1723711108, 'R2.jpeg'),
+(2, 'Router Wifi', 'router_wifi', 'PT Kipas Didinding', '<p><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. A maiores doloribus saepe libero doloremque officia similique eaque obcaecati ea, sunt nobis veritatis quis quibusdam quo!<br>\r\n<br>\r\nConsectetur perferendis delectus illo assumenda quas quia cum! Ipsum illo tenetur maiores explicabo, eum velit provident veritatis repellendus, quos, ipsam asperiores omnis quis expedita. Beatae?</strong></p>', 'Product', 1723711152, '7_Day_24Hr__SHOW_New_Releases_-_TOTOLINK_AC1200_Simultaneous_Dual_Band_Gigabit_Router_(A3002RU)3.jpeg'),
+(3, 'Rumah Pintar Menggunakan Kartu RFID', 'rumah_pintar_rfid', 'PT Cicak Didinding', '<h3><strong>Lorem ipsum dolor sit amet consectetur adipisicing elit. A maiores doloribus saepe libero doloremque officia similique eaque obcaecati ea, sunt nobis veritatis quis quibusdam quo! Consectetur perferendis delectus illo assumenda quas quia cum!</strong><br />\r\n<br />\r\n<span class="marker">Ipsum illo tenetur maiores explicabo, eum velit provident veritatis repellendus, quos, ipsam asperiores omnis quis expedita. Beatae?</span></h3>', 'Innovation', 1723711219, 'Leading_RFID_Tags_Supplier_In_Market3.jpeg');
 
 -- --------------------------------------------------------
 
@@ -202,10 +229,12 @@ CREATE TABLE `service` (
 --
 
 INSERT INTO `service` (`id`, `judul`, `slug`, `isi_service`, `created_by`, `created_at`, `image`) VALUES
-(1, 'Technical Support', 'technical_support', '<p>Dukungan Teknis atau Technical Support adalah layanan yang diberikan oleh suatu perusahaan untuk membantu mengatasi masalah client dalam penerapan, pemakaian, dan konfigurasi perangkat keras atau perangkat lunak. </p>\r\n\r\n<p>Technical support secara umum diberikan dalam bentuk email, tiket ,sms, chat,  website, maupun melalui layanan telepon.</p>\r\n\r\n<p><strong>A. Multi-tier Technical Support</strong></p>\r\n\r\n<p>Klasifikasi dukungan teknis/technical support dibagi menjadi 3 tingkatan (tier) atau level . Hal ini bertujuan untuk membagi tugas dan tanggung jawab diantara teknisi dan untuk memberikan layanan yang maksimal kepada client. Tingkatan technical support tersebut adalah :</p>\r\n\r\n<p><strong>1. Level I</strong></p>\r\n\r\n<p>Ini adalah “garis depan” dalam layanan dukungan teknis. Personel-personel yang ditempatkan di Level I memiliki pengetahuan umum tentang produk yang ditangani, seperti instalasi dan konfigurasi standard. Tugas pertama personel Level I adalah mengumpulkan informasi dari pelanggan dan menentukan masalah pelanggan dengan menganalisis gejala dan mencari tahu masalah dasar. Setelah masalah diketahui, untuk permasalahan umum dapat ditangani , seperti mereset username, membetulkan masukan ip address, memperbaiki info subcription, dll,  dapat juga memberikan saran ke client untuk melakukan perbaikan dengan panduan operator, misalnya konfigurasi dasar, pengecekan masalah dasar, dan troubleshooting sederhana. Jika masalah membutuhkan penanganan teknis tingkat mahir, maka personel level I akan membuatkan tiket laporan ke Level II. Dalam beberapa industri, personel level I membutuhkan pengetahuan, persyaratan produk dan kondisi yang ditawarkan oleh bisnis daripada informasi teknis itu sendiri . Contoh dari Level I Technical support adalah Call Center 24 jam dan dukungan tiket di WHMCS untuk hosting. Secara umum perusahaan IT hanya memberikan layanan sampai Level I.</p>\r\n\r\n<p><strong>2. Level II</strong></p>\r\n\r\n<p>Ini adalah level berikutnya setelah level I. Personel yang ditugaskan di Level II memiliki kemampuan advanced dan sertifikasi khusus dalam penanganan teknis produk dan jasa yang ditawarkan perusahaan.</p>\r\n\r\n<p>Level II menganalisa data yang diperoleh oleh Level I.</p>\r\n\r\n<p>Tugas-tugas personel level II dalam penanganan masalah meliputi pergantian perangkat keras, perbaikan OS dan perangkat lunak, diagnostik lengkap, melakukan remote ke system client untuk penanganan lebih dalam.</p>\r\n\r\n<p><strong>3. Level III</strong></p>\r\n\r\n<p>Level III adalah level tertinggi dalam klasifikasi tingkat technical support. Personel di level ini selain memiliki spesialisasi teknis yang mumpuni, juga memiliki pengalaman menangani system kritis. Level III bekerjasama dengan Level I dan Level II untuk analisa masalah dan pengumpulan informasi, tapi tidak terbatas untuk itu, Level III dapat menghubungi client secara langsung.</p>\r\n\r\n<p>Level III melakukan evaluasi, analisa, dan memberikan solusi untuk masalah-masalah baru, masalah yang sulit dipecahkan Level II, serta merancang ulang sistem sesuai kebutuhan client. Jika diperlukan maka Level III akan menangani masalah client secara onsite (langsung di tempat). Jika suatu masalah itu berakar dari sumber perangkat lunak atau kelemahan desain perangkat keras, maka personil Level III memiliki kemampuan untuk mengkomunikasikannya dengan pengembang/developer produk tersebut. Personil level II juga memiliki kemampuan untuk konfigurasi ulang, instalasi ulang, dan merancang program tambahan , dengan tetap mempertahankan integritas data di sistem client.</p>\r\n\r\n<p> </p>', 'Admin', 1723569443, 'Tech_BPO_-_Your_Reliable_Partner_for_Exceptional_BPO_Services.jpeg'),
+(1, 'Technical Support', 'technical_support', '<p>Dukungan Teknis atau Technical Support adalah layanan yang diberikan oleh suatu perusahaan untuk membantu mengatasi masalah client dalam penerapan, pemakaian, dan konfigurasi perangkat keras atau perangkat lunak. </p>\r\n\r\n<p>Technical support secara umum diberikan dalam bentuk email, tiket ,sms, chat,  website, maupun melalui layanan telepon.</p>\r\n\r\n<p><strong>A. Multi-tier Technical Support</strong></p>\r\n\r\n<p>Klasifikasi dukungan teknis/technical support dibagi menjadi 3 tingkatan (tier) atau level . Hal ini bertujuan untuk membagi tugas dan tanggung jawab diantara teknisi dan untuk memberikan layanan yang maksimal kepada client.</p>', 'Admin', 1723569443, 'Tech_BPO_-_Your_Reliable_Partner_for_Exceptional_BPO_Services.jpeg'),
 (3, 'Company Profile', 'company_profile', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit tempora ipsum maiores pariatur repudiandae. Nulla odio velit corrupti? Voluptate at eaque reprehenderit sequi odit voluptates aperiam, obcaecati, rerum ducimus quibusdam officiis doloremque aliquam earum atque consequatur. Laudantium, magni sed. Necessitatibus eius, fuga earum cum voluptates atque assumenda temporibus accusantium minima soluta, suscipit dolor. At, dolorem deleniti? Autem voluptatum impedit asperiores aliquam ad facere? Asperiores ipsam sint itaque soluta, ut velit distinctio, neque obcaecati natus nemo corporis odit tempore, explicabo aliquam.</p>', 'Admin', 1723752981, 'about4.jpg'),
 (4, 'Penanganan Masalah', 'penanganan_masalah', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugit tempora ipsum maiores pariatur repudiandae. Nulla odio velit corrupti? Voluptate at eaque reprehenderit sequi odit voluptates aperiam, obcaecati, rerum ducimus quibusdam<br>\r\n<br>\r\nofficiis doloremque aliquam earum atque consequatur. Laudantium, magni sed. Necessitatibus eius, fuga earum cum voluptates atque assumenda temporibus accusantium minima soluta,</p>', 'Admin', 1723753059, 'services31.jpg'),
-(5, 'Test aja', 'test_aja', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae a officiis amet animi sint molestias culpa hic libero laborum quos nam magnam perferendis reprehenderit quas adipisci impedit, ad consectetur repellat modi eius minima officia. Labore excepturi molestiae omnis nobis nulla? Voluptatum nihil magni sequi. Totam quibusdam animi hic perferendis. Commodi!<br>\r\n<br>\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae a officiis amet animi sint molestias culpa hic libero laborum quos nam magnam perferendis reprehenderit quas adipisci impedit, ad consectetur repellat modi eius minima officia. Labore excepturi molestiae omnis nobis nulla? Voluptatum nihil magni sequi. Totam quibusdam animi hic perferendis. Commodi!</p>', 'Admin', 1723753666, 'app-1.jpg');
+(5, 'Test aja', 'test_aja', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae a officiis amet animi sint molestias culpa hic libero laborum quos nam magnam perferendis reprehenderit quas adipisci impedit, ad consectetur repellat modi eius minima officia. Labore excepturi molestiae omnis nobis nulla? Voluptatum nihil magni sequi. Totam quibusdam animi hic perferendis. Commodi!<br>\r\n<br>\r\nLorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae a officiis amet animi sint molestias culpa hic libero laborum quos nam magnam perferendis reprehenderit quas adipisci impedit, ad consectetur repellat modi eius minima officia. Labore excepturi molestiae omnis nobis nulla? Voluptatum nihil magni sequi. Totam quibusdam animi hic perferendis. Commodi!</p>', 'Admin', 1723753666, 'app-1.jpg'),
+(6, 'Test_aja5', 'test_aja5', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae a officiis amet animi sint molestias culpa hic libero laborum quos nam magnam perferendis reprehenderit quas adipisci impedit, ad consectetur repellat modi eius minima officia. Labore excepturi molestiae omnis nobis nulla? Voluptatum nihil magni sequi. Totam quibusdam animi hic perferendis. Commodi!</p>', 'Admin', 1723972928, 'b0c67128-9e2a-4a2f-86ab-ae081960a4d4.jpeg'),
+(7, 'Test_aja6', 'test_aja6', '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae a officiis amet animi sint molestias culpa hic libero laborum quos nam magnam perferendis reprehenderit quas adipisci impedit, ad consectetur repellat modi eius minima officia. Labore excepturi molestiae omnis nobis nulla? Voluptatum nihil magni sequi. Totam quibusdam animi hic perferendis. Commodi!</p>', 'Admin', 1723973024, 'download_(1).jpeg');
 
 -- --------------------------------------------------------
 
@@ -273,6 +302,12 @@ ALTER TABLE `banner_image`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `contact`
 --
 ALTER TABLE `contact`
@@ -327,12 +362,17 @@ ALTER TABLE `about`
 -- AUTO_INCREMENT for table `admin_menu`
 --
 ALTER TABLE `admin_menu`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 --
 -- AUTO_INCREMENT for table `banner_image`
 --
 ALTER TABLE `banner_image`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `contact`
 --
@@ -347,7 +387,7 @@ ALTER TABLE `karyawan`
 -- AUTO_INCREMENT for table `partner`
 --
 ALTER TABLE `partner`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `portofolio`
 --
@@ -357,7 +397,7 @@ ALTER TABLE `portofolio`
 -- AUTO_INCREMENT for table `service`
 --
 ALTER TABLE `service`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT for table `user`
 --

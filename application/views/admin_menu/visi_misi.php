@@ -5,9 +5,6 @@
         <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
 
         <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahaboutModal">Tambah Visi Misi</a>
-        <div>
-            <span style="color:red;">Maksimal hanya 1 saja, jika lebih dari 1 akan menabrak hasilnya di bagian front</span>
-        </div>
 
         <div class="swal" data-swal="<?= $this->session->flashdata('pesan'); ?>" ></div>
 
@@ -46,9 +43,11 @@
             <form action="<?= base_url('admin_menu/visi_misi'); ?>" method="POST">
             <div class="modal-body">
                 <div class="form-group mb-3">
+                <label>Header </label>
                     <input type="text" class="form-control" id="header" name="header" placeholder="Header" required>
                 </div>
                 <div class="form-group mb-3">
+                <label>Isi Visi & Misi </label>
                 <textarea name="visi_misi" id="editor" class="form-control" cols="10" rows="5" placeholder="Misi" required></textarea> 
                 </div>
             </div>

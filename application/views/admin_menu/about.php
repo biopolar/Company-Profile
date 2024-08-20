@@ -5,10 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
 
     <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahaboutModal">Tambah About</a>
-        <div>
-            <span style="color:red;">Maksimal hanya 1 saja, jika lebih dari 1 akan menabrak hasilnya di bagian front</span>
-        </div>
-
+    
         <div class="swal" data-swal="<?= $this->session->flashdata('pesan'); ?>" ></div>
     <!-- Basic Card Example -->
     <?php foreach ($about as $a) : ?>
@@ -46,17 +43,21 @@
             <form action="<?= base_url('admin_menu/about'); ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group mb-3">
+                        <label>Header Bio</label>
                         <input type="text" class="form-control" id="hb" name="hb" placeholder="Header Bio" required>
                     </div>
                     <div class="form-group mb-3">
+                        <label>Motto</label>
                         <input type="text" class="form-control" id="motto" name="motto" placeholder="Motto" required>
                     </div>
                     <div class="form-group mb-3">
+                        <label>Detail Biodata</label>
                         <textarea name="detail_bio" id="editor" class="form-control" cols="30" rows="10" placeholder="Detail Bio" required></textarea> 
                     </div>
+                    <label>Foto Banner</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image">
-                        <label class="custom-file-label" for="image">Choose file</label>
+                        <label class="custom-file-label" for="image">Pilih Foto</label>
                     </div>
                 </div>
                 <div class="modal-footer">

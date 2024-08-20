@@ -49,30 +49,36 @@
             <form action="<?= base_url('admin_menu/portofolio'); ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group mb-3">
+                    <label>Judul Portofolio </label>
                         <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Portofolio" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Slug </label>
                         <input type="text" class="form-control" id="slug" name="slug" placeholder="Slug" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Nama Client </label>
                         <input type="text" class="form-control" id="client" name="client" placeholder="Nama Client" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Deskripsi </label>
                         <textarea name="deskripsi" id="editor" class="form-control" cols="30" rows="10" placeholder="Deskripsi" required></textarea> 
                     </div>
+                    <label>Foto Porto </label>
                     <div class="custom-file mb-3">
                         <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image" required>
                         <label class="custom-file-label" for="image">Choose file</label>
                     </div>
+                    <label>Tipe </label>
                     <div class="form-group mb-3">
                         <select name="tipe" class="form-control custom-select" aria-label="Default select example" required>
                             <option value="">Pilih Tipe yang ingin di pilih</option>
-                            <option value="product">Product</option>
-                            <option value="project">Project</option>
-                            <option value="innovation">Innovation</option>
-                            <option value="awards">Awards</option>
-                            <option value="partnership">Partnership</option>
-                            <option value="tech-support">Tech Support</option>
+                            <option value="Product">Product</option>
+                            <option value="Project">Project</option>
+                            <option value="Innovation">Innovation</option>
+                            <option value="Awards">Awards</option>
+                            <option value="Partnership">Partnership</option>
+                            <option value="Tech-support">Tech Support</option>
                         </select>
                     </div>
                 </div>

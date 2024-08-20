@@ -6,10 +6,6 @@
 
     <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahbannerModal">Tambah Banner</a>
 
-    <div>
-        <span style="color:red;">Maksimal hanya 1 saja, jika lebih dari 1 akan menabrak hasilnya di bagian front</span>
-    </div>
-
     <div class="swal" data-swal="<?= $this->session->flashdata('pesan'); ?>" ></div>
 
    <!-- Basic Card Example -->
@@ -44,8 +40,10 @@
             <form action="<?= base_url('admin_menu/banner_image') ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group mb-3">
-                        <textarea name="text" id="editor" class="form-control" cols="30" rows="10" placeholder="Detail Bio" required></textarea> 
+                        <label>Text Image </label>
+                        <textarea name="text" id="editor" class="form-control" cols="30" rows="10" placeholder="Text Image" required></textarea> 
                     </div>
+                    <label>Text Image </label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image">
                         <label class="custom-file-label" for="image">Choose file</label>

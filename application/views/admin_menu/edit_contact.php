@@ -8,23 +8,29 @@
                     <form action="<?= base_url('admin_menu/edit_contact/') . $contact['id']; ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?= $contact['id'] ?>" >
                         <div class="form-group mb-3">
+                        <label>Alamat </label>
                             <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="3" placeholder="Alamat" required><?= $contact['alamat'] ?> </textarea> 
                         </div>
                         <div class="form-group mb-3">
+                        <label>Nomor Telephone </label>
                             <input type="text" class="form-control" id="telp" name="telp" placeholder="Nomor Telephone" value="<?= $contact['telp'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Email </label>
                             <input type="text" class="form-control" id="email" name="email" placeholder="Email" value="<?= $contact['email'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Instagram </label>
                             <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram" value="<?= $contact['instagram'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Nomor Whatsapp </label>
                             <input type="text" class="form-control" id="wa" name="wa" placeholder="Nomor Whatsapp" value="<?= $contact['wa'] ?>" required>
                             <span class="text-primary">Salin : https://wa.me/+62(masukan nomornya)</span><br>
                             <span class="text-danger">contoh : https://wa.me/+6208119992204 </span>
                         </div>
                         <div class="form-group mb-3">
+                        <label>Maps </label>
                             <textarea class="form-control" name="maps" id="Maps" cols="30" rows="6" placeholder="Maps" required><?= $contact['maps'] ?> </textarea>   
                         </div>
                         <div class="form-group-row">

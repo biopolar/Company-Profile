@@ -9,13 +9,16 @@
                         <input type="hidden" name="id" id="id" value="<?= $data_menu['id'] ?>" >
                         <div class="modal-body">
                             <div class="form-group mb-3">
+                            <label>Nama </label>
                                 <input type="text" class="form-control" namespace id="nama" name="nama" value="<?= $data_menu['nama'] ?>">
                             </div>
                             <div class="form-group mb-3">
+                            <label>Icon </label>
                                 <input type="text" class="form-control" namespace id="icon" name="icon" value="<?= $data_menu['icon'] ?>">
                                 <span style="color:red ;">Contoh : fas fa-fw-(Object)</span>
                             </div>
                             <div class="form-group mb-3">
+                            <label>URL </label>
                                 <input type="text" class="form-control" namespace id="url" name="url" value="<?= $data_menu['url'] ?>">
                             </div>
                         </div>

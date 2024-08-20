@@ -131,34 +131,41 @@ class Admin_menu extends CI_Controller
             $this->load->view('admin_menu/about', $data);
             $this->load->view('template/admin_footer', $data);    
         } else {
-            // Load library upload
-            $this->load->library('upload');
-
-            $config['upload_path']  = './front-end/assets/img/about';
-            $config['allowed_types']= 'png|jpg|jpeg|gif';
-            $config['max_size']     = 2040;
-            
-            $this->upload->initialize($config);
-
-            if (!$this->upload->do_upload('image')) {
-                $this->session->set_flashdata('pesan', ' Gagal di tambahkan !');
+            // Cek apakah data sudah ada di database
+            $cek_data = $this->db->get_where('about')->num_rows();
+            if ($cek_data > 0) {
+                $this->session->set_flashdata('pesan', ' Tidak bisa menambahkan lagi!');
                 redirect('admin_menu/about');
             } else {
-                $image = $this->upload->data();
-                $image = $image['file_name'];
+                // Load library upload
+                $this->load->library('upload');
+
+                $config['upload_path']  = './front-end/assets/img/about';
+                $config['allowed_types']= 'png|jpg|jpeg|gif';
+                $config['max_size']     = 2040;
+                
+                $this->upload->initialize($config);
+
+                if (!$this->upload->do_upload('image')) {
+                    $this->session->set_flashdata('pesan', ' Gagal di tambahkan !');
+                    redirect('admin_menu/about');
+                } else {
+                    $image = $this->upload->data();
+                    $image = $image['file_name'];
+                }
+
+                $data = [
+                    'hb'                => $this->input->post('hb'),
+                    'motto'             => $this->input->post('motto'),
+                    'detail_bio'        => $this->input->post('detail_bio'),
+                    'image'             => $image // jangan lupa tambahkan ini jika ingin menyimpan nama file image
+                ];
+
+                // Insert ke table admin menu
+                $this->db->insert('about', $data);
+                $this->session->set_flashdata('pesan',' Di tambahkan !');
+                redirect('admin_menu/about');
             }
-
-            $data = [
-                'hb'                => $this->input->post('hb'),
-                'motto'             => $this->input->post('motto'),
-                'detail_bio'        => $this->input->post('detail_bio'),
-                'image'             => $image // jangan lupa tambahkan ini jika ingin menyimpan nama file image
-            ];
-
-            // Insert ke table admin menu
-            $this->db->insert('about', $data);
-            $this->session->set_flashdata('pesan',' Di tambahkan !');
-            redirect('admin_menu/about');
         }
     }
 
@@ -255,6 +262,12 @@ class Admin_menu extends CI_Controller
             $this->load->view('admin_menu/banner_image', $data);
             $this->load->view('template/admin_footer', $data);    
         } else {
+            // Cek apakah data sudah ada di database
+            $cek_data = $this->db->get_where('banner_image')->num_rows();
+            if ($cek_data > 0) {
+                $this->session->set_flashdata('pesan', ' Tidak bisa menambahkan lagi!');
+                redirect('admin_menu/banner_image');
+            } else {
             
             $config['upload_path']  = './front-end/assets/img/banner';
             $config['allowed_types']= 'png|jpg|jpeg|gif';
@@ -282,6 +295,7 @@ class Admin_menu extends CI_Controller
             $this->db->insert('banner_image', $data);
             $this->session->set_flashdata('pesan',' Di tambahkan !');
             redirect('admin_menu/banner_image');
+            }
         }
     }
 
@@ -374,6 +388,12 @@ class Admin_menu extends CI_Controller
             $this->load->view('admin_menu/visi_misi', $data);
             $this->load->view('template/admin_footer', $data);    
         } else {
+            // Cek apakah data sudah ada di database
+            $cek_data = $this->db->get_where('visi_misi')->num_rows();
+            if ($cek_data > 0) {
+                $this->session->set_flashdata('pesan', ' Tidak bisa menambahkan lagi!');
+                redirect('admin_menu/visi_misi');
+            } else {
             
             $data = [
                 'header'        => $this->input->post('header'),
@@ -383,6 +403,7 @@ class Admin_menu extends CI_Controller
             $this->db->insert('visi_misi', $data);
             $this->session->set_flashdata('pesan',' Di tambahkan !');
             redirect('admin_menu/visi_misi');
+            }
         }
     }
 
@@ -889,6 +910,12 @@ class Admin_menu extends CI_Controller
             $this->load->view('admin_menu/contact', $data);
             $this->load->view('template/admin_footer', $data);    
         } else {
+            // Cek apakah data sudah ada di database
+            $cek_data = $this->db->get_where('contact')->num_rows();
+            if ($cek_data > 0) {
+                $this->session->set_flashdata('pesan', ' Tidak bisa menambahkan lagi!');
+                redirect('admin_menu/contact');
+            } else {
             
             $config['upload_path']  = './front-end/assets/img/contact';
             $config['allowed_types']= 'png|jpg|jpeg';
@@ -923,6 +950,7 @@ class Admin_menu extends CI_Controller
             $this->db->insert('contact', $data);
             $this->session->set_flashdata('pesan',' Di tambahkan !');
             redirect('admin_menu/contact');
+        }
         }
     }
 
@@ -1010,7 +1038,7 @@ class Admin_menu extends CI_Controller
 
     public function partner()
     {
-        $data['judul'] = 'About';
+        $data['judul'] = 'Partner ';
 
         $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
 
@@ -1046,8 +1074,8 @@ class Admin_menu extends CI_Controller
             }
 
             $data = [
-                'url'                => $this->input->post('url'),
-                'image'             => $image // jangan lupa tambahkan ini jika ingin menyimpan nama file image
+                'url'       => $this->input->post('url'),
+                'image'     => $image // jangan lupa tambahkan ini jika ingin menyimpan nama file image
             ];
 
             // Insert ke table admin menu
@@ -1057,13 +1085,213 @@ class Admin_menu extends CI_Controller
         }
     }
     
-    public function edit_partner()
+    public function edit_partner($id)
     {
+        $data['judul'] = 'Service';
 
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Query tabelnya (ambil datanya)
+        $data['partner'] = $this->db->get_where('partner', ['id' => $id])->row_array();  
+        $data['admin_menu'] = $this->db->get('admin_menu')->result_array();
+
+        // Set Rules
+        $this->form_validation->set_rules('url', 'Link', 'required|trim');
+        
+        if ($this->form_validation->run() == false) {
+            // Jika validasi gagal, tampilkan pesan error
+            $this->load->view('template/admin_header', $data);
+            $this->load->view('template/admin_sidebar', $data);
+            $this->load->view('template/admin_topbar', $data);
+            $this->load->view('admin_menu/edit_partner', $data);
+            $this->load->view('template/admin_footer', $data);    
+        } else {
+            $url = $this->input->post('url', true);
+
+            // Cek jika ada gambar yang akan diganti
+            $upload = $_FILES['image']['name'];
+
+            if ($upload) {
+                $config['upload_path']  = './front-end/assets/img/partner/';
+                $config['allowed_types'] = 'png|jpg|jpeg';
+                $config['max_size']     = 2048;
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $gambar_lama = $data['partner']['image'];
+
+                    // Pastikan untuk memeriksa apakah gambar lama ada sebelum mencoba menghapusnya
+                    if ($gambar_lama) {
+                        unlink(FCPATH . 'front-end/assets/img/partner/' . $gambar_lama);
+                    }
+
+                    // Upload gambar baru
+                    $gambar_baru = $this->upload->data('file_name');
+                    $this->db->set('image', $gambar_baru);
+                } else {
+                    // Tampilkan error upload jika ada
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            // Set data update ke database
+            $this->db->set('url', $url);
+
+            // Update data ke table berdasarkan id yang benar
+            $this->db->where('id', $id);
+            if ($this->db->update('partner')) {
+                $this->session->set_flashdata('pesan', ' Di update');
+                redirect('admin_menu/partner');
+            } else {
+                // Jika update gagal, tambahkan pesan error
+                echo "Update data gagal.";
+            }
+        }
     }
 
-    public function hapus_partner()
-    {
 
+    public function hapus_partner($id)
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Hapus data yang ada dalam admin_menu
+        $this->db->delete('partner ', ['id' => $id]);
+        $this->session->set_flashdata('pesan', ' Di hapus!');
+        redirect('admin_menu/partner ');
+    }
+
+    public function comment()
+    {
+        $data['judul'] = 'Partner ';
+
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Query tabelnya (ambil tablenya)
+        $data['comment'] = $this->db->get_where('comment')->result_array();  
+        $data['admin_menu'] = $this->db->get_where('admin_menu')->result_array();
+
+        // Set Rules
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
+        $this->form_validation->set_rules('pesan', 'Pesan', 'required|trim');
+
+        if ($this->form_validation->run() == false) {
+            $this->load->view('template/admin_header', $data);
+            $this->load->view('template/admin_sidebar', $data);
+            $this->load->view('template/admin_topbar', $data);
+            $this->load->view('admin_menu/comment', $data);
+            $this->load->view('template/admin_footer', $data);    
+        } else {
+            // Load library upload
+            $this->load->library('upload');
+
+            $config['upload_path']  = './front-end/assets/img/comment';
+            $config['allowed_types']= 'png|jpg|jpeg|gif';
+            $config['max_size']     = 2040;
+            
+            $this->upload->initialize($config);
+
+            if (!$this->upload->do_upload('image')) {
+                $this->session->set_flashdata('pesan', ' Gagal di tambahkan !');
+                redirect('admin_menu/comment');
+            } else {
+                $image = $this->upload->data();
+                $image = $image['file_name'];
+            }
+
+            $data = [
+                'name'      => $this->input->post('name'),
+                'jabatan'   => $this->input->post('jabatan'),
+                'pesan'     => $this->input->post('pesan'),
+                'image'     => $image // jangan lupa tambahkan ini jika ingin menyimpan nama file image
+            ];
+
+            // Insert ke table admin menu
+            $this->db->insert('comment', $data);
+            $this->session->set_flashdata('pesan',' Di tambahkan !');
+            redirect('admin_menu/comment');
+        }
+    }
+
+    public function edit_comment($id)
+    {
+        $data['judul'] = 'Edit Comment';
+
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Query tabelnya (ambil datanya)
+        $data['comment'] = $this->db->get_where('comment', ['id' => $id])->row_array();  
+        $data['admin_menu'] = $this->db->get('admin_menu')->result_array();
+
+        // Set Rules
+        $this->form_validation->set_rules('name', 'Nama', 'required|trim');
+        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required|trim');
+        $this->form_validation->set_rules('pesan', 'Pesan', 'required|trim');
+        
+        if ($this->form_validation->run() == false) {
+            // Jika validasi gagal, tampilkan pesan error
+            $this->load->view('template/admin_header', $data);
+            $this->load->view('template/admin_sidebar', $data);
+            $this->load->view('template/admin_topbar', $data);
+            $this->load->view('admin_menu/edit_comment', $data);
+            $this->load->view('template/admin_footer', $data);    
+        } else {
+            $name = $this->input->post('name', true);
+            $jbt = $this->input->post('jabatan', true);
+            $pesan = $this->input->post('pesan', true);
+
+            // Cek jika ada gambar yang akan diganti
+            $upload = $_FILES['image']['name'];
+
+            if ($upload) {
+                $config['upload_path']  = './front-end/assets/img/comment/';
+                $config['allowed_types'] = 'png|jpg|jpeg';
+                $config['max_size']     = 2048;
+
+                $this->load->library('upload', $config);
+
+                if ($this->upload->do_upload('image')) {
+                    $gambar_lama = $data['comment']['image'];
+
+                    // Pastikan untuk memeriksa apakah gambar lama ada sebelum mencoba menghapusnya
+                    if ($gambar_lama) {
+                        unlink(FCPATH . 'front-end/assets/img/comment/' . $gambar_lama);
+                    }
+
+                    // Upload gambar baru
+                    $gambar_baru = $this->upload->data('file_name');
+                    $this->db->set('image', $gambar_baru);
+                } else {
+                    // Tampilkan error upload jika ada
+                    echo $this->upload->display_errors();
+                }
+            }
+
+            // Set data update ke database
+            $this->db->set('name', $name);
+            $this->db->set('jabatan', $jbt);
+            $this->db->set('pesan', $pesan);
+
+            // Update data ke table berdasarkan id yang benar
+            $this->db->where('id', $id);
+            if ($this->db->update('comment')) {
+                $this->session->set_flashdata('pesan', ' Di update');
+                redirect('admin_menu/comment');
+            } else {
+                // Jika update gagal, tambahkan pesan error
+                echo "Update data gagal.";
+            }
+        }
+    }
+
+    public function hapus_comment($id)
+    {
+        $data['user'] = $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+
+        // Hapus data yang ada dalam admin_menu
+        $this->db->delete('comment ', ['id' => $id]);
+        $this->session->set_flashdata('pesan', ' Di hapus!');
+        redirect('admin_menu/comment ');
     }
 }

@@ -56,13 +56,16 @@
                         <form action="<?= base_url('admin_menu/menu_management'); ?>" method="POST">
                         <div class="modal-body">
                             <div class="form-group mb-3">
+                            <label>Nama Menu</label>
                                 <input type="text" class="form-control" namespace id="nama" name="nama" placeholder="Nama Menu" required>
                             </div>
                             <div class="form-group mb-3">
+                            <label>Icon </label>
                                 <input type="text" class="form-control" namespace id="icon" name="icon" placeholder="Icon" required>
                                 <span style="color:red ;">Contoh : fas fa-fw-(Object)</span>
                             </div>
                             <div class="form-group mb-3">
+                            <label>Nama URL </label>
                                 <input type="text" class="form-control" namespace id="url" name="url" placeholder="URL" required>
                             </div>
                         </div>

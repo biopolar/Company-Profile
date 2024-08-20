@@ -8,7 +8,8 @@
                     <form action="<?= base_url('admin_menu/edit_banner/') . $banner_image['id']; ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?= $banner_image['id'] ?>" >
                     <div class="form-group mb-3">
-                        <textarea name="text" id="editor" class="form-control" cols="30" rows="10" placeholder="Detail Bio" required><?= $banner_image['text'] ?></textarea> 
+                    <label>Teks Image </label>
+                        <textarea name="text" id="editor" class="form-control" cols="30" rows="10" required><?= $banner_image['text'] ?></textarea> 
                     </div>
                         <div class="form-group-row">
                             <div class="col-sm-2"> Gambar </div>

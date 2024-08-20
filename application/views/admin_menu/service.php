@@ -49,20 +49,25 @@
             <form action="<?= base_url('admin_menu/service') ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group mb-3">
+                    <label>Judul </label>
                         <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Service" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Isi Slug </label>
                         <input type="text" class="form-control" id="slug" name="slug" placeholder="Isi Slug" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Dibuat Oleh </label>
                         <input type="text" class="form-control" id="created_by" name="created_by" placeholder="Created By" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Isi Service </label>
                         <textarea name="isi_service" id="editor" class="form-control" cols="30" rows="10" placeholder="Isi Service" required></textarea> 
                     </div>
+                    <label>Gambar Service </label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image">
-                        <label class="custom-file-label" for="image">Choose file</label>
+                        <label class="custom-file-label" for="image">Pilih Foto </label>
                         <span style="color:red ;">Bisa di input dengan tipe file : JPG, JPEG, PNG</span>
                     </div>
                 </div>

@@ -5,9 +5,7 @@
     <h1 class="h3 mb-4 text-gray-800"><?= $judul; ?></h1>
 
     <a href="" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambahcontactModal">Tambah contact</a>
-    <div> 
-        <span style="color:red;">Maksimal hanya 1 saja, jika lebih dari 1 akan menabrak hasilnya di bagian front</span>
-    </div>
+
     <div class="swal" data-swal="<?= $this->session->flashdata('pesan'); ?>" ></div>
 
    <!-- Basic Card Example -->
@@ -80,28 +78,35 @@
             <form action="<?= base_url('admin_menu/contact') ?>" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="form-group mb-3">
+                    <label>Alamat </label>
                         <textarea name="alamat" id="alamat" class="form-control" cols="30" rows="3" placeholder="Alamat" required></textarea> 
                     </div>
                     <div class="form-group mb-3">
+                    <label>Nomor Telephone </label>
                         <input type="text" class="form-control" id="telp" name="telp" placeholder="Nomor Telephone" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Email </label>
                         <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Instagram </label>
                         <input type="text" class="form-control" id="instagram" name="instagram" placeholder="Instagram" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Nomor Whatsapp </label>
                         <input type="text" class="form-control" id="wa" name="wa" placeholder="Nomor Whatsapp" required>
                         <span class="text-primary">Salin : https://wa.me/+62(masukan nomornya)</span><br>
                         <span class="text-danger">contoh : https://wa.me/+6208119992204 </span>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Google Maps </label>
                         <textarea class="form-control" name="maps" id="Maps" cols="30" rows="6" placeholder="Maps" required></textarea>   
-                    </div>                
+                    </div>
+                    <label>Gambar</label>
                     <div class="custom-file">
                         <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image">
-                        <label class="custom-file-label" for="image">Choose file</label>
+                        <label class="custom-file-label" for="image">Pilih Gambar</label>
                         <span style="color:red ;">Bisa di input dengan tipe file : JPG, JPEG, PNG</span>
                     </div>
                 </div>

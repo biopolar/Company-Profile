@@ -8,12 +8,15 @@
                     <form action="<?= base_url('admin_menu/edit_about/') . $about['id']; ?>" method="POST" enctype="multipart/form-data">
                         <input type="hidden" name="id" id="id" value="<?= $about['id'] ?>" >
                     <div class="form-group mb-3">
+                    <label>Header Bio </label>
                         <input type="text" class="form-control" id="hb" name="hb" placeholder="Header Bio" value="<?= $about['hb'] ?>" required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Motto </label>
                         <input type="text" class="form-control" id="motto" name="motto" placeholder="Motto" value="<?= $about['motto'] ?>"  required>
                     </div>
                     <div class="form-group mb-3">
+                    <label>Detail Bio </label>
                         <textarea name="detail_bio" id="editor" class="form-control" cols="30" rows="10" placeholder="Detail Bio" required><?= $about['detail_bio'] ?></textarea> 
                     </div>
                         <div class="form-group-row">

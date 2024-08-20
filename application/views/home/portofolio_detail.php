@@ -50,7 +50,7 @@
               <ul>
                 <li><strong>Category</strong>: <?= $portofolio['tipe'] ?></li>
                 <li><strong>Client</strong>: <?= $portofolio['client'] ?></li>
-                <li><strong>Project date</strong>: <?= date('d M Y', ($portofolio['created_at'])); ?></li>
+                <li><strong>Project Date</strong>: <?= date('d M Y', ($portofolio['created_at'])); ?></li>
               </ul>
             </div>
             <div class="portfolio-description" data-aos="fade-up" data-aos-delay="300">

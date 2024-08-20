@@ -57,13 +57,12 @@
     
     <div class="container">
       <div class="text-center">
-        <h2 class="sitename">Our Partner</h2>
+        <h2 class="sitename">Our Costumer</h2>
       </div>
     </div>
 
     <section id="clients" class="clients section">
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-        <?php foreach($partner as $prt) : ?>
         <div class="swiper">
           <script type="application/json" class="swiper-config">
             {
@@ -98,16 +97,19 @@
               }
             }
           </script>
-            
-              <div class="swiper-wrapper align-items-center">
-                <a class="swiper-slide" href="<?= $prt['url'] ?>" target="_blank"><img src="<?= base_url('front-end/assets/img/partner/').$prt['image']; ?>" class="img-fluid" alt=""></a>
-              </div>
-            <div class="swiper-pagination"></div>
+          <div class="swiper-wrapper align-items-center">
+            <?php foreach($partner as $prt) : ?>
+            <a href="<?= $prt['url'] ?>" target="_blank" class="swiper-slide"><img src="<?= base_url('front-end/assets/img/partner/').$prt['image']; ?>" class="img-fluid" alt=""></a>
+            <?php endforeach; ?>
           </div>
-        <?php endforeach; ?>
-
+            <div class="swiper-pagination">
+          </div>
+        </div>
+      
       </div>
-
+      
+      </div>
+    
     </section>
     <!-- /Brand Ambasador Section -->
 
@@ -135,7 +137,7 @@
               <a href="<?= base_url('home/service_detail/').$sv['slug']; ?>" class="stretched-link">
                 <h3 style="margin-bottom: 10px;"><?= $sv['judul'] ?></h3>
               </a>
-              <p style="margin-top: 0;"><?= substr(strip_tags($sv['isi_service']), 0, 250); ?></p>
+              <p style="margin-top: 0;"><?= substr(strip_tags($sv['isi_service']), 0, 250); ?>...</p>
 
               <a href="<?= base_url('home/service_detail/').$sv['slug']; ?>" class="read-more"> Baca Selengkapnya...</a>
             </div>  
@@ -161,15 +163,16 @@
 
         <div class="isotope-layout" data-default-filter="*" data-layout="masonry" data-sort="original-order">
 
-          <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
+        <ul class="portfolio-filters isotope-filters" data-aos="fade-up" data-aos-delay="100">
             <li data-filter="*" class="filter-active">All</li>
-            <li data-filter=".filter-product">Products</li>
-            <li data-filter=".filter-project">Project</li>
-            <li data-filter=".filter-innovation">Innvoation</li>
-            <li data-filter=".filter-awards">Awards</li>
-            <li data-filter=".filter-partnership">Partnership</li>
-            <li data-filter=".filter-tech-support">Tech Support</li>
-          </ul><!-- End Portfolio Filters -->
+            <li data-filter=".filter-Product">Products</li>
+            <li data-filter=".filter-Project">Project</li>
+            <li data-filter=".filter-Innovation">Innvoation</li>
+            <li data-filter=".filter-Awards">Awards</li>
+            <li data-filter=".filter-Partnership">Partnership</li>
+            <li data-filter=".filter-Tech-support">Tech Support</li>
+        </ul>
+          <!-- End Portfolio Filters -->
 
           <?php foreach($portofolio as $pf) : ?>
           <div class="row gy-4 isotope-container" data-aos="fade-up" data-aos-delay="200">
@@ -177,19 +180,22 @@
               <img src="<?= base_url('front-end/assets/img/portofolio/'). $pf['image']; ?>" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4><?= $pf['judul'] ?></h4>
-                <p><?= substr(strip_tags($pf['deskripsi']), 0, 180); ?>..</p>
+                <p><?= substr(strip_tags($pf['deskripsi']), 0, 180); ?>...</p>
                 <a href="<?= base_url('front-end/assets/img/portofolio/'). $pf['image']; ?>" title="<?= $pf['judul']; ?>" data-gallery="portfolio-gallery-products" class="glightbox preview-link"><i class="bi bi-zoom-in"></i></a>
                 <a href="<?= base_url('home/portofolio_detail/').$pf['slug'] ?>" title="More Details" class="details-link"><i class="bi bi-link-45deg"></i></a>
               </div>
-            </div><!-- End Portfolio Item -->
+            </div>
+            <!-- End Portfolio Item -->
           <?php endforeach; ?>
-          </div><!-- End Portfolio Container -->
+          </div>
+          <!-- End Portfolio Container -->
 
         </div>
 
       </div>
 
-    </section><!-- /Portfolio Section -->
+    </section>
+    <!-- /Portfolio Section -->
 
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section">
@@ -217,98 +223,41 @@
                 "el": ".swiper-pagination",
                 "type": "bullets",
                 "clickable": true
+              },
+              "navigation": {
+                "nextEl": ".swiper-button-next",
+                "prevEl": ".swiper-button-prev"
               }
             }
           </script>
           <div class="swiper-wrapper">
 
+          <?php foreach($comment as $cmt) : ?>
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="<?= base_url('front-end/'); ?>assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                <h3>Saul Goodman</h3>
-                <h4>Ceo &amp; Founder</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                <div class="testimonial-img-container">
+                  <img src="<?= base_url('front-end/assets/img/comment/').$cmt['image']; ?>" class="testimonial-img" alt="">
                 </div>
+                <h3><?= $cmt['name']?></h3>
+                <h4><?= $cmt['jabatan'] ?></h4>
                 <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
+                  <?= $cmt['pesan']; ?>
                 </p>
               </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="<?= base_url('front-end/'); ?>assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                <h3>Sara Wilsson</h3>
-                <h4>Designer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="<?= base_url('front-end/'); ?>assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                <h3>Jena Karlis</h3>
-                <h4>Store Owner</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="<?= base_url('front-end/'); ?>assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                <h3>Matt Brandon</h3>
-                <h4>Freelancer</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <img src="<?= base_url('front-end/'); ?>assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                <h3>John Larson</h3>
-                <h4>Entrepreneur</h4>
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  <i class="bi bi-quote quote-icon-left"></i>
-                  <span>Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.</span>
-                  <i class="bi bi-quote quote-icon-right"></i>
-                </p>
-              </div>
-            </div><!-- End testimonial item -->
+            </div>
+            <?php endforeach; ?>
+            <!-- End testimonial item -->
             
           </div>
-          <div class="swiper-pagination"></div>
-        </div>
+            <div class="swiper-pagination"></div>
+            <div style="color: orange;" class="swiper-button-prev swiper-btn"></div>
+            <div style="color: orange;" class="swiper-button-next swiper-btn"></div>
+          </div>
 
       </div>
 
-    </section><!-- /Testimonials Section -->
+    </section>
+    <!-- /Testimonials Section -->
 
     <!-- Team Section -->
     <section id="team" class="team section">
@@ -336,7 +285,7 @@
                 <div class="member-info">
                   <h4><?= $kry['nama']; ?></h4>
                   <span><?= $kry['jabatan']; ?></span>
-                  <p>Pesan : <?= $kry['pesan'] ?></p>
+                  <p><?= $kry['pesan'] ?></p>
                 </div>
               </div>
             </div>

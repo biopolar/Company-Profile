@@ -3,37 +3,33 @@
 
                 <div class="col-8">
                     <!-- Page Heading -->
-                    <h1 class="h3 mb-4 text-gray-800">Edit Menu</h1>
+                    <h1 class="h3 mb-4 text-gray-800">Edit Comment</h1>
 
-                    <form action="<?= base_url('admin_menu/edit_service/') . $service['id']; ?>" method="POST" enctype="multipart/form-data">
-                        <input type="hidden" name="id" id="id" value="<?= $service['id'] ?>" >
-                            <div class="form-group mb-3">
-                            <label>Judul </label>
-                            <input type="text" class="form-control" id="judul" name="judul" placeholder="Judul Service" value="<?= $service['judul'] ?>" required>
+                    <form action="<?= base_url('admin_menu/edit_comment/') . $comment['id']; ?>" method="POST" enctype="multipart/form-data">
+                        <input type="hidden" name="id" id="id" value="<?= $comment['id'] ?>" >
+                        <div class="form-group mb-3">
+                        <label>Nama </label>
+                            <input type="text" class="form-control" id="Nama" name="name" value="<?= $comment['name'] ?>"  required>
                         </div>
                         <div class="form-group mb-3">
-                        <label>Slug </label>
-                            <input type="text" class="form-control" id="slug" name="slug" placeholder="Isi Slug" value="<?= $service['slug'] ?>" required>
+                        <label>Jabatan </label>
+                            <input type="text" class="form-control" id="Jabatan" name="jabatan" value="<?= $comment['jabatan'] ?>" required>
                         </div>
                         <div class="form-group mb-3">
-                        <label>Dibuat Oleh </label>
-                            <input type="text" class="form-control" id="created_by" name="created_by" placeholder="Created By" value="<?= $service['created_by'] ?>" required>
-                        </div>
-                        <div class="form-group mb-3">
-                        <label>Isi Text </label>
-                            <textarea name="isi_service" id="editor" class="form-control" cols="30" rows="10" placeholder="Isi Service" required><?= $service['isi_service']?></textarea> 
+                        <label>Pesan </label>
+                            <textarea name="pesan" id="editor" class="form-control" cols="30" rows="10" placeholder="Pesan..." required><?= $comment['pesan'] ?></textarea> 
                         </div>
                         <div class="form-group-row">
                             <div class="col-sm-2"> Gambar </div>
                                 <div class="col-sm-10">
                                     <div class="row">
                                         <div class="col-sm-3">
-                                            <img src="<?= base_url('/front-end/assets/img/service/').$service['image']; ?>" class="img-thumbnail" alt="">
+                                            <img src="<?= base_url('/front-end/assets/img/comment/').$comment['image']; ?>" class="img-thumbnail" alt="">
                                         </div>
                                         <div class="col-sm-9">
                                         <div class="custom-file">
                                             <input type="file" class="custom-file-input" id="image" aria-describedby="image" name="image">
-                                            <label class="custom-file-label" for="image">Pilih Gambar</label>
+                                            <label class="custom-file-label" for="image"><?= $comment['image'] ?> </label>
                                             <span style="color:red ;">Bisa di input dengan tipe file : JPG, JPEG, PNG</span>
                                         </div>
                                     </div>
@@ -41,7 +37,7 @@
                             </div>
                         </div>
                     <div class="modal-footer d-flex justify-content-start">
-                        <button class="btn btn-primary" type="button" onclick="window.location.href='<?= base_url('admin_menu/service'); ?>'">Cancel</button>
+                        <button class="btn btn-primary" type="button" onclick="window.location.href='<?= base_url('admin_menu/comment'); ?>'">Cancel</button>
                         <button type="submit" class="btn btn-warning ms-2">Edit</button>
                     </div>
                 </form>
