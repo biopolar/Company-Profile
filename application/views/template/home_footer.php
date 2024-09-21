@@ -60,7 +60,7 @@
 
 <!-- Main JS File -->
 <script src="<?= base_url('front-end/'); ?>assets/js/main.js"></script>
-
+ 
 </body>
 
   <script>
